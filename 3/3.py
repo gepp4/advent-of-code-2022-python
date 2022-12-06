@@ -2,6 +2,7 @@ import string
 
 VALUES = list(string.ascii_letters)
 
+# Part 1
 with open("input") as file:
 
     rucksacks = [line for line in file.read().split("\n")]
@@ -18,15 +19,21 @@ with open("input") as file:
 
     print(total_priority)
 
-
+# Part 2
 with open("input") as file:
     rucksacks = [line for line in file.read().split("\n")]
     elves_group = []
+    total_priority = 0
     for i in range(0, len(rucksacks), 3):
         print(i)
         group = [rucksacks[i], rucksacks[i + 1], rucksacks[i + 2]]
         elves_group.append(group)
 
-    print(elves_group)
-    print(len(elves_group))
+    for group in elves_group:
+        for item in VALUES:
+            if item in group[0] and item in group[1] and item in group[2]:
+                total_priority += VALUES.index(item) + 1
+
+    print(total_priority)
+
 
