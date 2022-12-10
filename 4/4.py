@@ -11,6 +11,15 @@ with open("input.txt") as file:
         elif second[0] >= first[0] and second[1] <= first[1]:
             total_fully_contained += 1
 
-    print(total_fully_contained)
+    #2
+    total_overlap = 0
+    for pair in pairs:
+        first, second = pair.split(",")
+        first = [int(shift) for shift in first.split("-")]
+        second = [int(shift) for shift in second.split("-")]
+        if  not(first[0] > second[1] or first[1] < second[0]):
+            total_overlap += 1
+
+    print(total_overlap)
 
 
